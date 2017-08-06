@@ -27,4 +27,11 @@ class Connection(user: String) {
 
     socket.on(Socket.EVENT_DISCONNECT, { println("disconnected") })
   }
+
+  fun sendNotification(destination: String, payload: Any) {
+    val data = JSONObject()
+    data.put("destination", destination)
+    data.put("payload", payload)
+    socket.emit("new", data)
+  }
 }
