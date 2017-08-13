@@ -9,7 +9,7 @@ fun main(args: Array<String>) {
 
   val conn = Connection("aksel")
 
-  conn.onNotification = { notification -> ui.setLabelText(notification.get("payload").toString()) }
+  conn.onNotification = { notification -> ui.displayTrayMessage(notification.get("payload").toString()) }
 
   conn.connect()
 }
