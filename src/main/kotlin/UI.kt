@@ -1,15 +1,8 @@
 package main.kotlin
 
+import java.awt.*
 import javax.swing.JFrame
 import javax.swing.JLabel
-import java.awt.AWTException
-import java.awt.SystemTray
-import java.awt.TrayIcon
-import java.awt.Toolkit
-import java.awt.event.MouseEvent
-import java.awt.event.MouseAdapter
-import javax.swing.SwingUtilities
-
 
 class UI : JFrame() {
   val label = JLabel()
@@ -39,13 +32,11 @@ class UI : JFrame() {
 
     trayIcon.setImageAutoSize(true)
 
-    trayIcon.addMouseListener(object : MouseAdapter() {
-      override fun mouseReleased(e: MouseEvent) {
-        if (SwingUtilities.isRightMouseButton(e)) {
-          println("Right click")
-        }
-      }
-    })
+    val popup = PopupMenu()
+    val exitItem = MenuItem("Exit")
+    popup.add(exitItem)
+
+    trayIcon.popupMenu = popup
 
     try {
       tray.add(trayIcon)
