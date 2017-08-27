@@ -4,8 +4,7 @@ import main.kotlin.UI
 fun main(args: Array<String>) {
   println("Notifo client")
 
-  val ui: UI = UI()
-  ui.isVisible = true
+  val ui = UI()
 
   val conn = Connection("aksel")
 

@@ -13,7 +13,6 @@ class UI : JFrame() {
 
   init {
     title = "Notifo Client"
-    defaultCloseOperation = EXIT_ON_CLOSE
 
     label.text = "Notification"
     add(label)
@@ -34,9 +33,14 @@ class UI : JFrame() {
     trayIcon.setImageAutoSize(true)
 
     val popup = PopupMenu()
+
+    val showFrameItem = MenuItem("Open")
+    showFrameItem.addActionListener { this.isVisible = true }
+
     val exitItem = MenuItem("Exit")
     exitItem.addActionListener { exitProcess(0) }
 
+    popup.add(showFrameItem)
     popup.add(exitItem)
 
     trayIcon.popupMenu = popup
