@@ -1,8 +1,12 @@
 package main.kotlin
 
 import java.awt.*
+import java.awt.event.MouseAdapter
+import java.awt.event.MouseEvent
 import javax.swing.JFrame
 import javax.swing.JLabel
+import javax.swing.SwingUtilities
+import kotlin.system.exitProcess
 
 class UI : JFrame() {
   val label = JLabel()
@@ -34,6 +38,8 @@ class UI : JFrame() {
 
     val popup = PopupMenu()
     val exitItem = MenuItem("Exit")
+    exitItem.addActionListener { exitProcess(0) }
+
     popup.add(exitItem)
 
     trayIcon.popupMenu = popup
