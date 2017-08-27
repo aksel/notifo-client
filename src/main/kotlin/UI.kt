@@ -32,6 +32,8 @@ class UI : JFrame() {
 
     trayIcon.setImageAutoSize(true)
 
+    trayIcon.addActionListener { this.isVisible = true }
+
     val popup = PopupMenu()
 
     val showFrameItem = MenuItem("Open")
