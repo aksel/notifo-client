@@ -6,6 +6,10 @@ import java.awt.AWTException
 import java.awt.SystemTray
 import java.awt.TrayIcon
 import java.awt.Toolkit
+import java.awt.event.MouseEvent
+import java.awt.event.MouseAdapter
+import javax.swing.SwingUtilities
+
 
 class UI : JFrame() {
   val label = JLabel()
@@ -34,6 +38,14 @@ class UI : JFrame() {
     val tray = SystemTray.getSystemTray()
 
     trayIcon.setImageAutoSize(true)
+
+    trayIcon.addMouseListener(object : MouseAdapter() {
+      override fun mouseReleased(e: MouseEvent) {
+        if (SwingUtilities.isRightMouseButton(e)) {
+          println("Right click")
+        }
+      }
+    })
 
     try {
       tray.add(trayIcon)
